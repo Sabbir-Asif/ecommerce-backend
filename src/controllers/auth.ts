@@ -13,7 +13,7 @@ export const signup = async (req: Request, res: Response, next: NextFunction) =>
 
     const parsed = SignUpSchema.safeParse(req.body);
     if (!parsed.success) {
-        throw new UnprocessableEntity(parsed.error.flatten(),'Validation failed', ErrorCode.UNPROCESSABLE_ENTITY);
+        throw new UnprocessableEntity(parsed.error,'Validation failed', ErrorCode.UNPROCESSABLE_ENTITY);
     }
     const { name, email, password } = req.body;
 
