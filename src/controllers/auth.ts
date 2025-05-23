@@ -68,3 +68,10 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
     res.json({ user, token });
 }
+
+export const me = async (req: Request, res: Response) => {
+    if(req.headers.user) {
+        const user = JSON.parse(req.headers.user as string);
+        res.send(user);
+    }
+}
